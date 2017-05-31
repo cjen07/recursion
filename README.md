@@ -1,7 +1,7 @@
 ## Recursion
 example project to write straight recursive functions with memorization in elixir using OTP and metaprogramming
 
-### example: it seems to be O(2^n), but it is O(n).
+### it seems to be O(2^n), but it is O(n).
 
 ```elixir
 defmodule Recursion do
@@ -18,7 +18,17 @@ end
 ```
 
 ```elixir
-iex -S mix
+iex --erl "+P 5000000" -S mix
 Recursion.fib 10000
 # => 544383731135652813387342...(very short time)
 ```
+
+### remark: avoid big number addition
+```elixir
+# in Recursion.ex
+# replace fib(n-1) + fib(n-2)
+rem (fib(n-1) + fib(n-2)), 5
+```
+
+
+
